@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="app.js"></script>
     
-    <title>A Math and Science Quiz</title>
+    <title id="title">A Math and Science Quiz</title>
 </head>
 <body>
     <div class="quiz-box">  </div>
@@ -17,17 +17,20 @@
         <button class="Science">Science</button>
     </div>
     <div class="Quiz-question">
-        <button onclick="AnswerCheck(0)">Answer num 1</button>
-        <button onclick="AnswerCheck(1)">Answer num 2</button>
-        <button onclick="AnswerCheck(2)">Answer num 3</button>
-        <button onclick="AnswerCheck(3)">Answer num 4</button>
+        <div> <button onclick="AnswerCheck(0)" id="btn" >Answer num 1</button></div>
+
+        <div> <button onclick="AnswerCheck(1)" id="btn" >Answer num 2</button></div>
+
+        <div> <button onclick="AnswerCheck(2)" id="btn" >Answer num 3</button></div>
+
+        <div> <button onclick="AnswerCheck(3)" id="btn" >Answer num 4</button></div>
     </div>
     <div>
-    <button id="next"></button>
+    <button id="next"> Next</button>
 </div>
     <div>
-        <h2 class="score"></h2>
-        <button class="restart"></button>
+        <h2 class="score"> Points :</h2>
+        <button class="restart"> Try again</button>
     </div>
     
 </body>

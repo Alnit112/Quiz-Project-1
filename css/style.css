@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: palegoldenrod;
+    align-items: center;
+    text-align: center;
+    border: solid black;
+    height: 500px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.Quiz-question {
+    display: flex ;
+    flex-direction: column;
+    text-align: center;
+    gap: 7px;
+
+}
+
+h1 {
+    text-align: center;
+
+}
+
+p {
+    text-align: center;
+}
+
+#btn {
+    display: flex;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 50px;
+    gap: 10px;
+
+    
+}
+
+.Topic {
+    
+}
+
