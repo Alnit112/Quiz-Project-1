@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="app.js"></script>
+    <script  defer src="js/app.js"></script>
     
     <title id="title">A Math and Science Quiz</title>
 </head>
@@ -13,17 +13,79 @@
     <h1>Math and Science Quiz</h1>
     <div class="Topic">
         <p>Pick a Topic </p>
-        <button class="Math">Math</button>
-        <button class="Science">Science</button>
+        <button class="masc">Math</button>
+        <button class="masc">Science</button>
     </div>
     <div class="Quiz-question">
-        <div> <button onclick="AnswerCheck(0)" id="btn" >Answer num 1</button></div>
-
-        <div> <button onclick="AnswerCheck(1)" id="btn" >Answer num 2</button></div>
-
-        <div> <button onclick="AnswerCheck(2)" id="btn" >Answer num 3</button></div>
-
-        <div> <button onclick="AnswerCheck(3)" id="btn" >Answer num 4</button></div>
+        <div class="question">
+            <p>What is the value of Pi (π) up to two decimal places?</p>
+            <div class="choices">
+                <label>
+                    <input type="radio" name="q1" value="3.55"> 3.55
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="3.14"> 3.14
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="3.87"> 3.87
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="3.99"> 3.99
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <p>What is the smallest prime number?</p>
+            <div class="choices">
+                <label>
+                    <input type="radio" name="q2" value="4"> 4
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="7"> 7
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="5"> 5
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="2"> 2
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <p>What is the sum of the angles in a triangle?</p>
+            <div class="choices">
+                <label>
+                    <input type="radio" name="q3" value="150"> 150
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="165"> 165
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="170"> 170
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="180"> 180
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <p>What is the square root of 144?</p>
+            <div class="choices">
+                <label>
+                    <input type="radio" name="q4" value="11"> 11
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="8"> 8
+                </label>
+                    <label>
+                    <input type="radio" name="q4" value="12"> 12
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="13"> 13
+                </label>
+            </div>
+        </div>
+    </div>
     </div>
     <div>
     <button id="next"> Next</button>
