@@ -1,7 +1,8 @@
 // 1. Define the variables
-// 2. 
-// 3.
-// 4.
+// 2. when user clicks next btn youll want a function that takes the values for their answers, then checks them against the correct answer for that question 
+
+// 3.then calculate how many questions correct
+// 4.display score on screen
 // 5.
 // 6.
 // 7.
@@ -78,7 +79,7 @@ const nextBtn = document.querySelector(".next")
 
 /*-------------------------------- Functions --------------------------------*/
 
-const createQuestionElement = (question, choices) => {
+const createQuestionElement = (question, choices, idex) => {
     const questionElement = document.createElement(`p`)
     questionElement.textContent = question
     mainQuestion.appendChild(questionElement)
@@ -87,17 +88,47 @@ const createQuestionElement = (question, choices) => {
 
     const choiceContainerElement = document.createElement(`div`)
     choices.forEach((choice) => {
-        const choiceElement = document.createElement(`p`)
-        choiceElement.textContent = choice
+        const choiceElement = document.createElement(`input`)
+        const label = document.createElement("label")
+        choiceElement.type = "radio"
+        choiceElement.name = idex
+        label.textContent = choice
         choiceContainerElement.appendChild(choiceElement)
+        choiceContainerElement.appendChild(label)
     })
     mainQuestion.appendChild(choiceContainerElement)
 }
+const createQuestions = () => {
+    mathQuestion.forEach((question, idex) => {
+        console.log(idex);
+        
+        createQuestionElement (question.question, question.choice, idex)
+    
+    }
+    )
+}
 
-createQuestionElement ("What is the value of Pi (π) up to two decimal places?", ["3.55", "3.14", "3.87", "3.99" ])
-
+const checkAnswers = () => {
+    const questions = Topic === "math" ? mathQuestion : scienceQuestion;
+    const currentQuestion = questions[currentQuestionIndex];
+    
+}
+createQuestions ()
 
 /*----------------------------- Event Listeners -----------------------------*/
 
+nextBtn.addEventListener(
+    "next",
+    (nextBtn) => {
+        const nextButton = new FormData(".next")
+        let output = "";
+        for (const entry of nextButton){
+            output = `${output}${entry[0]}=${entry[1]}\r`
+        }
+        log.innerText = output
+        nextBtn.preventDefault();
+    },
+    false,
+);
 
 
