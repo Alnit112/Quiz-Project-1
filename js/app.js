@@ -109,26 +109,29 @@ const createQuestions = () => {
 }
 
 const checkAnswers = () => {
-    const questions = Topic === "math" ? mathQuestion : scienceQuestion;
-    const currentQuestion = questions[currentQuestionIndex];
-    
+    const pickChoice = document.querySelector("input[name = 'choice']:checked");
+        if (!pickChoice) return false
+        const question = topic === "math" ? mathQuestion : scienceQuestion;
+        const currentQuestion = question[question]
+        if (parseInt(selectedOption.value) === currentQuestion.answer) {
+            score++
+        }
+        console.log(true);
 }
+
+const fixScore = () => {
+    showScore.textContent = `points: ${score}`;
+
+}
+
+const handleClick = () => {
+
+}
+
 createQuestions ()
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-nextBtn.addEventListener(
-    "next",
-    (nextBtn) => {
-        const nextButton = new FormData(".next")
-        let output = "";
-        for (const entry of nextButton){
-            output = `${output}${entry[0]}=${entry[1]}\r`
-        }
-        log.innerText = output
-        nextBtn.preventDefault();
-    },
-    false,
-);
+nextBtn.addEventListener("click", handleClick)
 
 
