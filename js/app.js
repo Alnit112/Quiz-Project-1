@@ -73,7 +73,7 @@ let score = null
 const twoTopics = document.querySelector(".masc")
 const mainQuestion = document.querySelector(".Quiz-question")
 const showScore = document.querySelector(".score")
-const retsartBtn = document.querySelector(".restart")
+const restartBtn = document.querySelector(".restart")
 const nextBtn = document.querySelector(".next")
 
 
@@ -98,6 +98,7 @@ const createQuestionElement = (question, choices, idex) => {
     })
     mainQuestion.appendChild(choiceContainerElement)
 }
+
 const createQuestions = () => {
     mathQuestion.forEach((question, idex) => {
         console.log(idex);
@@ -108,16 +109,26 @@ const createQuestions = () => {
     )
 }
 
+const showQuestion = () => {
+    const
+}
+
+const clearQuestion = () => {
+    mainQuestion.innerHTML = ""
+}
+
 const checkAnswers = () => {
     const pickChoice = document.querySelector("input[name = 'choice']:checked");
         if (!pickChoice) return false
-        const question = topic === "math" ? mathQuestion : scienceQuestion;
-        const currentQuestion = question[question]
-        if (parseInt(selectedOption.value) === currentQuestion.answer) {
+        const question = Topic === "math" ? mathQuestion : scienceQuestion;
+        const currentQuestion = question[0]
+        if (parseInt(pickChoice.value) === currentQuestion.answer) {
             score++
         }
         console.log(true);
 }
+
+
 
 const fixScore = () => {
     showScore.textContent = `points: ${score}`;
@@ -133,5 +144,5 @@ createQuestions ()
 /*----------------------------- Event Listeners -----------------------------*/
 
 nextBtn.addEventListener("click", handleClick)
-
+restartBtn.addEventListener("click", )
 
