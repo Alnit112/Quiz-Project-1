@@ -65,7 +65,7 @@ const scienceQuestion = [
 /*---------------------------- Variables (state) ----------------------------*/
 
 let Topic = null
-let question = null
+let questions = null
 let score = null
 
 /*------------------------ Cached Element References ------------------------*/
@@ -110,7 +110,10 @@ const createQuestions = () => {
 }
 
 const showQuestion = () => {
-    const
+    const currentQuestions = Topic === "math" ? mathQuestion : scienceQuestion
+    const currentQuestion = question[0]
+    const choices = currentQuestion.choices || currentQuestion.choices
+    createQuestionElement(currentQuestion.question, choices)
 }
 
 const clearQuestion = () => {
@@ -129,14 +132,22 @@ const checkAnswers = () => {
 }
 
 
-
 const fixScore = () => {
     showScore.textContent = `points: ${score}`;
 
 }
 
 const handleClick = () => {
+    const answerd = checkAnswer();
+    if (!answerd) {
+        return
+    }
+}
 
+
+
+const quizFinished = () => {
+    
 }
 
 createQuestions ()
