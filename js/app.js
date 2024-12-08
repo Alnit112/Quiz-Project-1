@@ -92,28 +92,28 @@ const createQuestionElement = (question, choices, idex) => {
         const label = document.createElement("label")
         choiceElement.type = "radio"
         choiceElement.name = idex
-        label.textContent = choice
+        label.textContent = `choice-${idex}`
         choiceContainerElement.appendChild(choiceElement)
         choiceContainerElement.appendChild(label)
     })
     mainQuestion.appendChild(choiceContainerElement)
 }
 
-const createQuestions = () => {
-    mathQuestion.forEach((question, idex) => {
-        console.log(idex);
-        
-        createQuestionElement (question.question, question.choice, idex)
-    
-    }
-    )
-}
-
 const showQuestion = () => {
-    const currentQuestions = Topic === "math" ? mathQuestion : scienceQuestion
-    const currentQuestion = question[0]
-    const choices = currentQuestion.choices || currentQuestion.choices
-    createQuestionElement(currentQuestion.question, choices)
+    let currentQuestions;
+    if (Topic === "math") {
+        currentQuestions = mathQuestion;
+    } else {
+        currentQuestions = scienceQuestion;
+    }
+    const currentQuestion = currentQuestions[questions]
+    let choices;
+    if (currentQuestion.choices) {
+        choices = currentQuestion.choices;
+    } else {
+        choices = currentQuestion.choice;
+    }
+    createQuestionElement(currentQuestion.question, choices, questions)
 }
 
 const clearQuestion = () => {
@@ -121,10 +121,15 @@ const clearQuestion = () => {
 }
 
 const checkAnswers = () => {
-    const pickChoice = document.querySelector("input[name = 'choice']:checked");
+    const pickChoice = document.querySelector(`input[name = 'choice-${question}']:checked`);
         if (!pickChoice) return false
-        const question = Topic === "math" ? mathQuestion : scienceQuestion;
-        const currentQuestion = question[0]
+        let currentQuestions
+        if (Topic === "math") {
+            currentQuestions = mathQuestion;
+        } else {
+            currentQuestions = scienceQuestion;
+        }
+        const currentQuestion = question[questions]
         if (parseInt(pickChoice.value) === currentQuestion.answer) {
             score++
         }
@@ -142,17 +147,45 @@ const handleClick = () => {
     if (!answerd) {
         return
     }
-}
 
+
+let currentQuestions;
+
+if (Topic === "math") {
+    currentQuestions = mathQuestion;
+} else {
+    currentQuestions = scienceQuestion;
+}
+questions++
+
+if (questions < currentQuestions.lenght){
+    showQuestion();
+} else {
+    quizFinished();
+}
+fixScore();
 
 
 const quizFinished = () => {
-    
+    clearQuestion()
+    mainQuestion.textContent = 'Quiz is completed! Final score ${score}'    
 }
 
-createQuestions ()
+const restartQuiz = () => {
+    Topic = null
+    questions = 0
+    score = 0
+    fixScore
+    clearQuestion
+}
+}
+
 
 /*----------------------------- Event Listeners -----------------------------*/
+
+
+
+
 
 nextBtn.addEventListener("click", handleClick)
 restartBtn.addEventListener("click", )
