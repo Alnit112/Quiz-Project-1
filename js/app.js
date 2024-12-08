@@ -70,7 +70,7 @@ let score = null
 
 /*------------------------ Cached Element References ------------------------*/
 
-const twoTopics = document.querySelector(".masc")
+const twoTopics = document.querySelectorAll(".masc")
 const mainQuestion = document.querySelector(".Quiz-question")
 const showScore = document.querySelector(".score")
 const restartBtn = document.querySelector(".restart")
@@ -80,19 +80,19 @@ const nextBtn = document.querySelector(".next")
 /*-------------------------------- Functions --------------------------------*/
 
 const createQuestionElement = (question, choices, idex) => {
-    const questionElement = document.createElement(`p`)
+    const questionElement = document.createElement("p")
     questionElement.textContent = question
     mainQuestion.appendChild(questionElement)
-    console.log(questionElement);
    
 
     const choiceContainerElement = document.createElement(`div`)
-    choices.forEach((choice) => {
+    choices.forEach((choice, idx) => {
         const choiceElement = document.createElement(`input`)
         const label = document.createElement("label")
-        choiceElement.type = "radio"
-        choiceElement.name = idex
-        label.textContent = `choice-${idex}`
+        choiceElement.type = "radio";
+        choiceElement.name = `choice${idex}`;
+        choiceElement.value = idx;
+        label.textContent = choice;
         choiceContainerElement.appendChild(choiceElement)
         choiceContainerElement.appendChild(label)
     })
@@ -100,6 +100,7 @@ const createQuestionElement = (question, choices, idex) => {
 }
 
 const showQuestion = () => {
+    clearQuestion()
     let currentQuestions;
     if (Topic === "math") {
         currentQuestions = mathQuestion;
@@ -117,23 +118,25 @@ const showQuestion = () => {
 }
 
 const clearQuestion = () => {
-    mainQuestion.innerHTML = ""
+    mainQuestion.innerHTML = "";
 }
 
 const checkAnswers = () => {
-    const pickChoice = document.querySelector(`input[name = 'choice-${question}']:checked`);
+    const pickChoice = document.querySelector(`input[name = 'choice${questions}']:checked`);
         if (!pickChoice) return false
+
         let currentQuestions
+
         if (Topic === "math") {
             currentQuestions = mathQuestion;
         } else {
             currentQuestions = scienceQuestion;
         }
-        const currentQuestion = question[questions]
+        const currentQuestion = currentQuestions[questions]
         if (parseInt(pickChoice.value) === currentQuestion.answer) {
             score++
         }
-        console.log(true);
+        return true;
 }
 
 
@@ -143,9 +146,9 @@ const fixScore = () => {
 }
 
 const handleClick = () => {
-    const answerd = checkAnswer();
-    if (!answerd) {
-        return
+    const answered = checkAnswers();
+    if (!answered) {
+        return;
     }
 
 
@@ -156,37 +159,49 @@ if (Topic === "math") {
 } else {
     currentQuestions = scienceQuestion;
 }
-questions++
 
-if (questions < currentQuestions.lenght){
+questions++;
+
+if (questions < currentQuestions.length){
     showQuestion();
 } else {
     quizFinished();
 }
 fixScore();
 
+}
 
 const quizFinished = () => {
     clearQuestion()
-    mainQuestion.textContent = 'Quiz is completed! Final score ${score}'    
+    mainQuestion.textContent = `Quiz is completed! Final score ${score}`  ;
+    nextBtn.disabled = true  
 }
 
 const restartQuiz = () => {
     Topic = null
     questions = 0
     score = 0
-    fixScore
-    clearQuestion
+    fixScore();
+    clearQuestion();
+   
 }
-}
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+twoTopics.forEach((button) => {
+    button.addEventListener("click", (theEvent) => {
+        Topic = theEvent.target.textContent.toLowerCase();
+        questions = 0;
+        score = 0;
+        fixScore();
+        showQuestion();
+    });
+});
 
 
 
 nextBtn.addEventListener("click", handleClick)
-restartBtn.addEventListener("click", )
+restartBtn.addEventListener("click", restartQuiz )
 
