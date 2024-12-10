@@ -1,12 +1,3 @@
-// 1. Define the variables
-// 2. when user clicks next btn youll want a function that takes the values for their answers, then checks them against the correct answer for that question 
-
-// 3.then calculate how many questions correct
-// 4.display score on screen
-// 5.
-// 6.
-// 7.
-
 
 /*-------------------------------- Constants --------------------------------*/
 
@@ -173,8 +164,11 @@ fixScore();
 
 const quizFinished = () => {
     clearQuestion()
-    mainQuestion.textContent = `Quiz is completed! Final score ${score}`  ;
-    nextBtn.disabled = true  
+    if (score <= 2){
+    mainQuestion.textContent = `sorry but you lost! Final score ${score}`;
+    } else if (score >= 3) {
+        mainQuestion.textContent = `you won! Final score ${score}`;
+    } 
 }
 
 const restartQuiz = () => {
@@ -199,8 +193,6 @@ twoTopics.forEach((button) => {
         showQuestion();
     });
 });
-
-
 
 nextBtn.addEventListener("click", handleClick)
 restartBtn.addEventListener("click", restartQuiz )
