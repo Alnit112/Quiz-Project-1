@@ -1,6 +1,4 @@
 
-/*-------------------------------- Constants --------------------------------*/
-
 const mathQuestion = [
     {
         question: "What is the value of Pi (π) up to two decimal places?",
@@ -52,14 +50,11 @@ const scienceQuestion = [
 ]
 
 
-
-/*---------------------------- Variables (state) ----------------------------*/
-
 let Topic = null
 let questions = null
 let score = null
 
-/*------------------------ Cached Element References ------------------------*/
+
 
 const twoTopics = document.querySelectorAll(".masc")
 const mainQuestion = document.querySelector(".Quiz-question")
@@ -68,7 +63,6 @@ const restartBtn = document.querySelector(".restart")
 const nextBtn = document.querySelector(".next")
 
 
-/*-------------------------------- Functions --------------------------------*/
 
 const createQuestionElement = (question, choices, idex) => {
     const questionElement = document.createElement("p")
@@ -180,9 +174,6 @@ const restartQuiz = () => {
    
 }
 
-
-
-/*----------------------------- Event Listeners -----------------------------*/
 
 twoTopics.forEach((button) => {
     button.addEventListener("click", (theEvent) => {
