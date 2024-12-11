@@ -1,6 +1,6 @@
 # The-MS-Quiz
 
-The game name - The MS Quiz
+The game name/How it works - The game is called MS Quiz and you have two subjects to pick from science and maths. There are 4 questions, if you get 2 or more wrong you lose and if you get 3 or more correct you win.
 
 
  Main section-![image](https://github.com/user-attachments/assets/f690e3f9-1d58-442c-814b-4bb085c4225e)
